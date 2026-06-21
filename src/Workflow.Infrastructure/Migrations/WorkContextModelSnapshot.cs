@@ -10,7 +10,7 @@ using Workflow.Domain.Context;
 
 namespace Workflow.Infrastructure.Migrations
 {
-    [DbContext(typeof(WorkContext))]
+    [DbContext(typeof(WorkflowContext))]
     partial class WorkContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

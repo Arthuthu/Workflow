@@ -1,6 +1,7 @@
-﻿using Workflow.Application.Interfaces.Services;
-using Workflow.Application.Interfaces.Repositories;
+﻿using Workflow.Application.Interfaces.Repositories;
+using Workflow.Application.Interfaces.Services;
 using Workflow.Domain.Entities;
+using Workflow.Domain.Enums;
 
 namespace Workflow.Application.Services
 {
@@ -36,6 +37,11 @@ namespace Workflow.Application.Services
         public async Task<bool> Delete(Guid id, CancellationToken cancellationToken)
         {
             return await _repository.Delete(id, cancellationToken);
+        }
+
+        public async Task ChangeStatusAsync(Guid id, Status newStatus, string? reason, CancellationToken cancellationToken)
+        {
+            await _repository.ChangeStatus(id, newStatus, reason, cancellationToken);
         }
     }
 }

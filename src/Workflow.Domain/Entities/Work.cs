@@ -10,5 +10,7 @@ namespace Workflow.Domain.Entities
         public Priority Priority { get; set; }
 
         public List<WorkHistory> Histories { get; set; } = [];
+
+        public Work() { }
     }
 }

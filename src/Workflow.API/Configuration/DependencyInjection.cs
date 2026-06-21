@@ -3,7 +3,6 @@ using Workflow.Application.Interfaces.Repositories;
 using Workflow.Application.Interfaces.Services;
 using Workflow.Application.Services;
 using Workflow.Domain.Context;
-using Workflow.Infrastructure.Repositories;
 
 namespace UserApi.Configuration
 {
@@ -22,10 +21,10 @@ namespace UserApi.Configuration
 
 		public static IServiceCollection AddApplicationDbContext(this IServiceCollection services, IConfiguration config)
 		{
-			services.AddDbContext<WorkContext>(options =>
+			services.AddDbContext<WorkflowContext>(options =>
 			{
 				options.UseNpgsql(config.GetConnectionString("WorkConnection"),
-					assembly => assembly.MigrationsAssembly(typeof(WorkContext)
+					assembly => assembly.MigrationsAssembly(typeof(WorkflowContext)
 					.Assembly.FullName));
 			});
 

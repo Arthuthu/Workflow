@@ -6,18 +6,28 @@ namespace Workflow.API.Mapper
 {
     public static class DomainToApiContract
     {
-        public static Work ToWork(this WorkRequest request)
+        public static WorkResponse ToWorkResponse(this Work work)
         {
-            return new Work
+            return new WorkResponse
             {
-                Title = request.Title,
-                Description = request.Description,
-                Priority = request.Priority,
+                Id = work.Id,
+                Title = work.Title,
+                Description = work.Description,
+                Status = work.Status,
+                Priority = work.Priority,
+                Histories = work.Histories.Select(x => new WorkHistoryResponse
+                {
+                    Id = x.Id,
+                    Description = x.Description,
+                    FromStatus = x.FromStatus,
+                    ToStatus = x.ToStatus
+                }).ToList()
             };
         }
-        public static List<Work> ToWork(this IEnumerable<WorkRequest> works)
+
+        public static List<WorkResponse> ToWorkResponse(this IEnumerable<Work> works)
         {
-            return works.Select(w => w.ToWork()).ToList();
+            return works.Select(w => w.ToWorkResponse()).ToList();
         }
     }
 }

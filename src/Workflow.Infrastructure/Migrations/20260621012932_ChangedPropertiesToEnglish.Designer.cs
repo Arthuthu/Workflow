@@ -11,7 +11,7 @@ using Workflow.Domain.Context;
 
 namespace Workflow.Infrastructure.Migrations
 {
-    [DbContext(typeof(WorkContext))]
+    [DbContext(typeof(WorkflowContext))]
     [Migration("20260621012932_ChangedPropertiesToEnglish")]
     partial class ChangedPropertiesToEnglish
     {

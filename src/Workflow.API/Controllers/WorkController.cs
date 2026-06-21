@@ -3,6 +3,7 @@ using Workflow.API.DTOs.Requests;
 using Workflow.API.DTOs.Responses;
 using Workflow.API.Mapper;
 using Workflow.Application.Interfaces.Services;
+using Workflow.Application.Services;
 using Workflow.Domain.Entities;
 
 namespace Workflow.API.Controllers
@@ -127,5 +128,14 @@ namespace Workflow.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
-	}
+
+        [HttpPatch("work/{id:guid}/status")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> ChangeStatus(Guid id, [FromBody] ChangeStatusRequest request, CancellationToken cancellationToken)
+        {
+            await _service.ChangeStatusAsync(id, request.Status, request.Reason, cancellationToken);
+            return NoContent();
+        }
+    }
 }
