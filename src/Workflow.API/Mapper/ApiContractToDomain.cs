@@ -14,7 +14,6 @@ namespace Workflow.API.Mapper
                 Description = work.Description,
                 Status = work.Status,
                 Priority = work.Priority,
-                CompletedAt = work.CompletedAt
             };
         }
 

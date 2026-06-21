@@ -13,7 +13,6 @@ namespace Workflow.API.Mapper
                 Title = request.Title,
                 Description = request.Description,
                 Priority = request.Priority,
-                CompletedAt = request.CompletedAt
             };
         }
         public static List<Work> ToWork(this IEnumerable<WorkRequest> works)

@@ -18,7 +18,6 @@ namespace Workflow.Infrastructure.Mapping
             builder.Property(x => x.Description).HasMaxLength(256);
             builder.Property(x => x.Status).HasConversion<string>().IsRequired();
             builder.Property(x => x.Priority).HasConversion<string>().IsRequired();
-            builder.Property(x => x.CompletedAt);
 
             builder.HasMany(x => x.Histories)
                    .WithOne(h => h.Work)

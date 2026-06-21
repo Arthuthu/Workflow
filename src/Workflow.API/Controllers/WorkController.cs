@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics.Contracts;
-using System.Security.Principal;
+﻿using Microsoft.AspNetCore.Mvc;
 using Workflow.API.DTOs.Requests;
 using Workflow.API.DTOs.Responses;
 using Workflow.API.Mapper;
@@ -70,10 +67,15 @@ namespace Workflow.API.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 Work entity = request.ToWork();
                 await _service.Create(entity, cancellationToken);
 
-                return Ok();
+                return Ok(entity.ToWorkResponse());
             }
             catch (Exception ex)
             {
@@ -96,7 +98,7 @@ namespace Workflow.API.Controllers
                     return NotFound();
                 }
 
-                return Ok(result.ToWorkResponse());
+                return Ok(entity.ToWorkResponse());
             }
             catch (Exception ex)
             {
@@ -118,7 +120,7 @@ namespace Workflow.API.Controllers
                     return NotFound(StatusCodes.Status404NotFound);
                 }
 
-                return Ok();
+                return Ok("Work deleted");
             }
             catch (Exception ex)
             {

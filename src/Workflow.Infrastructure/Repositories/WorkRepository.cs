@@ -41,9 +41,8 @@ namespace Workflow.Infrastructure.Repositories
                 .ExecuteUpdateAsync(setters => setters
                     .SetProperty(x => x.Title, entity.Title)
                     .SetProperty(x => x.Description, entity.Description)
-                    .SetProperty(x => x.Histories, entity.Histories)
                     .SetProperty(x => x.Priority, entity.Priority)
-                    .SetProperty(x => x.CompletedAt, entity.CompletedAt),
+                    .SetProperty(x => x.UpdatedAt, DateTimeOffset.UtcNow),
                     cancellationToken);
 
             return affected > 0 ? entity : null;

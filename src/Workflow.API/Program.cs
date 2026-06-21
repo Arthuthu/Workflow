@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using UserApi.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,8 +9,14 @@ builder.Services
     .AddApplicationDbContext(config)
     .AddCorsPolicy();
 
-builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services
+.AddControllers()
+.AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+});
 
 var app = builder.Build();
     

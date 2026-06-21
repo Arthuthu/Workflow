@@ -9,6 +9,5 @@ namespace Workflow.API.DTOs.Responses
         public string? Description { get; set; } = null;
         public Status Status { get; set; }
         public Priority Priority { get; set; }
-        public DateTime? CompletedAt { get; set; }
     }
 }

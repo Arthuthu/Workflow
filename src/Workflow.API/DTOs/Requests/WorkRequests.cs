@@ -6,7 +6,7 @@ namespace Workflow.API.DTOs.Requests
 	{
         public string Title { get; set; } = string.Empty;
         public string? Description { get; set; } = null;
-        public Priority Priority { get; set; }
-        public DateTime? CompletedAt { get; set; }
+        public Status Status { get; set; } = Status.Open;
+        public Priority Priority { get; set; } = Priority.Low;
     }
 }
