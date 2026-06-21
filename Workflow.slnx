@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="src/Workflow.API/Workflow.API.csproj" />
+  <Project Path="src/Workflow.Application/Workflow.Application.csproj" />
+  <Project Path="src/Workflow.Domain/Workflow.Domain.csproj" />
+  <Project Path="src/Workflow.Infrastructure/Workflow.Infrastructure.csproj" />
+</Solution>
